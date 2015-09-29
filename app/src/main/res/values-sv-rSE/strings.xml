@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Nästa Avgång</string>
+
+    <string name="action_settings">Inställningar</string>
+    <string name="current_station">current_station</string>
+    <string name="current_city">current_city</string>
+
+
+    <!-- Common -->
+    <string name="error_connection">Ingen anslutning, försök igen.</string>
+    <string name="error_connection_button">Försök igen</string>
+
+    <!-- NearbyStations -->
+    <string name="choose_station">Välj hållplats</string>
+    <string name="error_no_stations_found">Inga hållplatser hittades i närheten</string>
+
+    <!-- NearbyDepartures-->
+    <string name="error_no_departures_found">Inga avgångar hittades, Testa en annan hållplats.</string>
+
+
+</resources>

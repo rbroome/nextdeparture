@@ -1,0 +1,31 @@
+<resources>
+<color name="back6">#fa8719</color>
+<color name="front6">#00abe5</color>
+
+<color name="back7">#7d4313</color>
+<color name="front78">#ffffff</color>
+
+<color name="back8">#872387</color>
+
+<color name="back10">#b4e16e</color>
+<color name="front10">#0e629b</color>
+<color name="purple">#800080</color>
+<color name="maroon">#800000</color>
+<color name="aqua">#00FFFF</color>
+<color name="lime">#00FF00</color>
+<color name="teal">#008080</color>
+<color name="lightgray">#bfbfbf</color>
+<color name="gray">#4e4e4e</color>
+<color name="bg">#1f3861</color>
+<color name="black">#000000</color>
+<color name="secundaryBlue">#004b85</color>
+
+    <color name="TextColorPrimary">#4074c8</color>
+    <color name="ColorPrimary">#ffffff</color>
+        <color name="ColorPrimaryDark">#17376d</color>
+    <!--
+    <color name="ColorPrimary">#1f3861</color>
+        <color name="ColorPrimaryDark">#0c1d3b</color>
+    -->
+</resources>
+
