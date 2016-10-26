@@ -1,10 +1,12 @@
 package broome.com.nastaavgang.base.interfaces;
 
-import broome.com.nastaavgang.nearbystations.impl.model.Station;
-
 import java.util.List;
 
+import broome.com.nastaavgang.nearbystations.impl.model.Station;
+
 /**
+ * Interface for getting nearby stations.
+ * It will return either a list of the stations or an error.
  * Created by robin on 16/08/15.
  */
 public interface GetNearbyStations {

@@ -1,7 +1,5 @@
 package broome.com.nastaavgang.executor.impl;
 
-import broome.com.nastaavgang.executor.interfaces.Executor;
-import broome.com.nastaavgang.executor.interfaces.Interactor;
 import android.util.Log;
 
 import java.util.concurrent.BlockingQueue;
@@ -11,7 +9,11 @@ import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
+import broome.com.nastaavgang.executor.interfaces.Executor;
+import broome.com.nastaavgang.executor.interfaces.Interactor;
+
 /**
+ * Runs interactors in a seperate thread.
  * Created by robin on 02/05/15.
  */
 public class ThreadExecutor implements Executor {
@@ -21,7 +23,7 @@ public class ThreadExecutor implements Executor {
     private static final int MAX_POOL_SIZE = 5;
     private static final int KEEP_ALIVE_TIME = 120;
     private static final TimeUnit TIME_UNIT = TimeUnit.SECONDS;
-    private static final BlockingQueue<Runnable> WORK_QUEUE = new LinkedBlockingQueue<Runnable>();
+    private static final BlockingQueue<Runnable> WORK_QUEUE = new LinkedBlockingQueue<>();
 
     private ThreadPoolExecutor threadPoolExecutor;
 

@@ -35,7 +35,7 @@ import butterknife.ButterKnife;
 public class NearbyStationsActivity extends FragmentActivity implements OnMapReadyCallback,NearbyStationsPresenter.View,AdapterView.OnItemClickListener {
 
 
-    @Bind(R.id.helloworld)
+    @Bind(R.id.helloworld2)
     ListView listViewOfStations;
     @Bind(R.id.connection_error_view)
     LinearLayout connectionError;
@@ -67,7 +67,7 @@ public class NearbyStationsActivity extends FragmentActivity implements OnMapRea
         presenter = ((CustomApplication)getApplication()).Component().nearbyStationsPresenter();
         presenter.setView(this);
 
-        stations = new ArrayList<Station>();
+        stations = new ArrayList<>();
         stationAdapter = new StationAdapter(this,stations);
 
         listViewOfStations.setAdapter(stationAdapter);

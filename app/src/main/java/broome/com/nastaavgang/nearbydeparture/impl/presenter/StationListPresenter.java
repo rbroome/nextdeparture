@@ -1,11 +1,6 @@
 package broome.com.nastaavgang.nearbydeparture.impl.presenter;
 
-import broome.com.nastaavgang.base.impl.LocationInteractor;
-import broome.com.nastaavgang.base.interfaces.GetNearbyDepartures;
-import broome.com.nastaavgang.base.interfaces.GetNearbyStations;
-import broome.com.nastaavgang.nearbydeparture.impl.model.Departure;
-import broome.com.nastaavgang.nearbydeparture.interfaces.Presenter;
-import broome.com.nastaavgang.nearbystations.impl.model.Station;
+import android.util.Log;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -14,6 +9,13 @@ import java.util.Calendar;
 import java.util.List;
 
 import javax.inject.Inject;
+
+import broome.com.nastaavgang.base.impl.LocationInteractor;
+import broome.com.nastaavgang.base.interfaces.GetNearbyDepartures;
+import broome.com.nastaavgang.base.interfaces.GetNearbyStations;
+import broome.com.nastaavgang.nearbydeparture.impl.model.Departure;
+import broome.com.nastaavgang.nearbydeparture.interfaces.Presenter;
+import broome.com.nastaavgang.nearbystations.impl.model.Station;
 
 /**
  * Created by robin on 16/08/15.
@@ -59,29 +61,7 @@ public class StationListPresenter extends Presenter {
             }
         });
     }
-     /**
-    public void getNearbyStations(String stationsid){
-        view.showLoading();
 
-        getNearbyStations.execute(new GetNearbyStations.Callback() {
-            @Override
-            public void onStationsFound(List<Station> stations) {
-                view.showStationsFound(stations);
-                stationsList = stations;
-                getNearbyDepartures();
-            }
-
-            @Override
-            public void onStationsNotFound() {
-                view.showStationsNotFound();
-            }
-
-            @Override
-            public void onConnectionError() {
-                view.showConnectionError();
-            }
-        });
-    }*/
      public void getNearbyDepartures(){
          view.showLoading();
 
@@ -155,6 +135,7 @@ public class StationListPresenter extends Presenter {
         try {
             cal2.setTime(dateFormat.parse(date));
         }catch (ParseException e){
+            Log.e(this.getClass().getSimpleName(),e.getMessage());
 
         }
         long i = cal2.getTimeInMillis() - cal.getTimeInMillis();

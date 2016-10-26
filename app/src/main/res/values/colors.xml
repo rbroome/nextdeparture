@@ -20,9 +20,9 @@
 <color name="black">#000000</color>
 <color name="secundaryBlue">#004b85</color>
 
-    <color name="TextColorPrimary">#4074c8</color>
+    <color name="TextColorPrimary">#fbbb2b</color>
     <color name="ColorPrimary">#ffffff</color>
-        <color name="ColorPrimaryDark">#17376d</color>
+        <color name="ColorPrimaryDark">#cf9d31</color>
     <!--
     <color name="ColorPrimary">#1f3861</color>
         <color name="ColorPrimaryDark">#0c1d3b</color>

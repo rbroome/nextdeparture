@@ -4,7 +4,11 @@ import android.broome.com.nastaavgang.R;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import java.util.Collections;
+import java.util.List;
+
 /**
+ *
  * Created by robin on 30/08/15.
  */
 public class Departure {
@@ -15,6 +19,7 @@ public class Departure {
     private LatLng location;
     private int primaryColor;
     private int secondaryColor;
+    private List<Stop> stops;
 
     public Departure(String timeLeft, String toStation, String number,LatLng location,String fromStation) {
         this.timeLeft = timeLeft;
@@ -24,6 +29,7 @@ public class Departure {
         this.fromStation = fromStation;
         this.secondaryColor = R.color.secundaryBlue;
         this.primaryColor = R.color.front78;
+        this.stops = Collections.emptyList();
     }
     public Departure(String timeLeft, String toStation, String number,LatLng location,String fromStation,int secondaryColor,int primaryColor) {
         this.timeLeft = timeLeft;
@@ -33,6 +39,17 @@ public class Departure {
         this.fromStation = fromStation;
         this.secondaryColor = secondaryColor;
         this.primaryColor = primaryColor;
+        this.stops = Collections.emptyList();
+    }
+    public Departure(String timeLeft, String toStation, String number,LatLng location,String fromStation,int secondaryColor,int primaryColor,List<Stop> stops) {
+        this.timeLeft = timeLeft;
+        this.toStation = toStation;
+        this.number = number;
+        this.location = location;
+        this.fromStation = fromStation;
+        this.secondaryColor = secondaryColor;
+        this.primaryColor = primaryColor;
+        this.stops = stops;
     }
 
     public int getPrimaryColor() {
@@ -90,4 +107,6 @@ public class Departure {
     public void setNumber(String number) {
         this.number = number;
     }
+    public int getNrOfStops(){return stops.size();}
+    public List<Stop> getStops(){return stops;}
 }

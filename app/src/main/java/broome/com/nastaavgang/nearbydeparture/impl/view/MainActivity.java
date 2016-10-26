@@ -6,13 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -28,7 +29,7 @@ import javax.inject.Inject;
 
 import broome.com.nastaavgang.base.impl.LocationInteractor;
 import broome.com.nastaavgang.di.CustomApplication;
-import broome.com.nastaavgang.nearbydeparture.impl.adapter.DepartureAdapter;
+import broome.com.nastaavgang.nearbydeparture.impl.adapter.DepartureRecycleAdapter;
 import broome.com.nastaavgang.nearbydeparture.impl.model.Departure;
 import broome.com.nastaavgang.nearbydeparture.impl.presenter.StationListPresenter;
 import broome.com.nastaavgang.nearbystations.impl.model.Station;
@@ -50,15 +51,18 @@ public class MainActivity extends FragmentActivity implements StationListPresent
     @Bind(R.id.no_departure_found)
     LinearLayout departureNotFound;
     @Bind(R.id.helloworld)
-    ListView listViewOfDepartures;
+    RecyclerView recyclerView;
 
     @Inject
     StationListPresenter presenter;
 
     android.location.Location mLastLocation;
     List<Departure> departures;
-    DepartureAdapter departureAdapter;
+    //DepartureAdapter departureAdapter;
+    DepartureRecycleAdapter departureAdapter;
     StreetViewPanorama panorama;
+
+
     @Inject
     LocationInteractor ls;
 
@@ -71,19 +75,25 @@ public class MainActivity extends FragmentActivity implements StationListPresent
 
         ButterKnife.bind(this);
 
+
         StreetViewPanoramaFragment streetViewPanoramaFragment =
                 (StreetViewPanoramaFragment) getFragmentManager()
                         .findFragmentById(R.id.streetviewpanorama);
 
 
-        departureAdapter = new DepartureAdapter(this,departures);
-        listViewOfDepartures.setAdapter(departureAdapter);
+        //departureAdapter = new DepartureAdapter(this,departures);
+
+        //listViewOfDepartures.setAdapter(departureAdapter);
 
         streetViewPanoramaFragment.getStreetViewPanoramaAsync(this);
 
         presenter = ((CustomApplication) getApplication()).Component().stationListPrestener();
         presenter.setView(this);
         loadDepartures();
+        departureAdapter = new DepartureRecycleAdapter(recyclerView,departures);
+        recyclerView.setAdapter(departureAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
 
     }
 
@@ -180,7 +190,6 @@ public class MainActivity extends FragmentActivity implements StationListPresent
 
     @Override
     public void showDeparturesFound(final List<Departure> departures) {
-        final List<Departure> departuresList = departures;
         this.departures.clear();
         this.departures.addAll(departures);
 

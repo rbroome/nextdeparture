@@ -1,8 +1,5 @@
 package broome.com.nastaavgang.base.impl;
 
-import broome.com.nastaavgang.executor.interfaces.Executor;
-import broome.com.nastaavgang.executor.interfaces.Interactor;
-import broome.com.nastaavgang.base.interfaces.GetLastLocation;
 import android.content.Context;
 import android.location.Location;
 import android.os.Bundle;
@@ -13,7 +10,12 @@ import com.google.android.gms.location.LocationServices;
 
 import javax.inject.Inject;
 
+import broome.com.nastaavgang.base.interfaces.GetLastLocation;
+import broome.com.nastaavgang.executor.interfaces.Executor;
+import broome.com.nastaavgang.executor.interfaces.Interactor;
+
 /**
+ * Interactor for Google location service
  * Created by robin on 19/08/15.
  */
 public class LocationInteractor implements GetLastLocation,Interactor,GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {

@@ -5,12 +5,13 @@ import android.app.Application;
 
 
 /**
+ * Base application containing the applicationComponent.
+ * Also builds the dependency graph
  * Created by robin on 02/05/15.
  */
 public class CustomApplication extends Application{
 
     private ApplicationComponent applicationComponent;
-//    private ApiComponent apiComponent;
 
 
     @Override public void onCreate() {
@@ -19,10 +20,6 @@ public class CustomApplication extends Application{
     }
 
     private void initializeInjector() {
-        //this.applicationComponent = DaggerApplicationComponent.builder()
-          //      .applicationModule(new ApplicationModule(this))
-            //    .build();
-        //this.apiComponent = DaggerApiComponent.builder().apiModule(new ApiModule(this)).build();
         this.applicationComponent = DaggerApplicationComponent.builder().applicationModule(new ApplicationModule(this)).build();
     }
     public ApplicationComponent Component() {

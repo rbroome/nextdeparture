@@ -2,13 +2,13 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
 
     defaultConfig {
         applicationId "android.broome.com.nastaavgang"
         minSdkVersion 15
-        targetSdkVersion 22
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
     }
@@ -39,4 +39,6 @@ dependencies {
     apt 'com.google.dagger:dagger-compiler:2.0'
     compile 'com.jakewharton:butterknife:7.0.1'
     provided 'org.glassfish:javax.annotation:10.0-b28'
+    compile 'com.bignerdranch.android:expandablerecyclerview:2.1.0'
+    compile 'net.cachapa.expandablelayout:expandablelayout:2.1'
 }

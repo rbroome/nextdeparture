@@ -1,10 +1,14 @@
 package broome.com.nastaavgang.base.interfaces;
 
-import broome.com.nastaavgang.nearbydeparture.impl.model.Departure;
-
 import java.util.List;
 
+import broome.com.nastaavgang.nearbydeparture.impl.model.Departure;
+
 /**
+ * Interface for getting departures near the user.
+ * It will either return a list of Departures or errors.
+ *
+ *
  * Created by robin on 16/08/15.
  */
 public interface GetNearbyDepartures {

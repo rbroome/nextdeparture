@@ -7,6 +7,7 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
+ * Module containing the application context.
  * Created by robin on 02/05/15.
  */
 @Module
@@ -21,21 +22,5 @@ public class ApplicationModule {
     public Context provideApplicationContext() {
         return this.application.getApplicationContext();
     }
-/**  private final CustomApplication application;
 
-    public ApplicationModule(CustomApplication application) {
-        this.application = application;
-    }
-
-    @Provides
-    @Singleton
-    public Context provideApplicationContext() {
-        return this.application;
-    }
-
-    //@Provides @Singleton
-    //ThreadExecutor provideThreadExecutor(JobExecutor jobExecutor) {
-    //    return jobExecutor;
-    //}
-    */
 }

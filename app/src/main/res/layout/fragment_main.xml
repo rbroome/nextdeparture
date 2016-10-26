@@ -4,9 +4,14 @@
     android:background="@color/front78">
 
 
-    <ListView android:layout_width="wrap_content"
+    <android.support.v7.widget.RecyclerView android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/helloworld"
+        android:divider="@drawable/list_divider"
+        android:dividerHeight="1dp"/>
+    <ListView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/helloworld2"
         android:divider="@drawable/list_divider"
         android:dividerHeight="1dp"/>
 
