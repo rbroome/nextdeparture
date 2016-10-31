@@ -1,7 +1,7 @@
-package broome.com.nastaavgang.nearbydeparture.impl.adapter;
+package broome.com.nastaavgang.nearbydepartures.impl.adapter;
 
 import android.broome.com.nastaavgang.R;
-import broome.com.nastaavgang.nearbydeparture.impl.model.Departure;
+import broome.com.nastaavgang.nearbydepartures.impl.model.Departure;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;

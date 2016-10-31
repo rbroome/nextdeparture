@@ -1,4 +1,4 @@
-package broome.com.nastaavgang.nearbydeparture.impl.adapter;
+package broome.com.nastaavgang.nearbydepartures.impl.adapter;
 
 import android.broome.com.nastaavgang.R;
 import android.content.Context;
@@ -12,7 +12,7 @@ import com.bignerdranch.expandablerecyclerview.Model.ParentListItem;
 
 import java.util.List;
 
-import broome.com.nastaavgang.nearbydeparture.impl.model.Departure;
+import broome.com.nastaavgang.nearbydepartures.impl.model.Departure;
 
 /**
  * Created by robin on 24/01/16.

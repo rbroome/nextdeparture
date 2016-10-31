@@ -3,7 +3,7 @@ package broome.com.nastaavgang.trafiklab.impl.interactor;
 import broome.com.nastaavgang.base.interfaces.GetNearbyDepartures;
 import broome.com.nastaavgang.executor.interfaces.Executor;
 import broome.com.nastaavgang.executor.interfaces.Interactor;
-import broome.com.nastaavgang.nearbydeparture.impl.model.Departure;
+import broome.com.nastaavgang.nearbydepartures.impl.model.Departure;
 import broome.com.nastaavgang.trafiklab.impl.model.departure.DepartureResponse;
 import broome.com.nastaavgang.trafiklab.impl.model.departure.Departuresegment;
 import broome.com.nastaavgang.trafiklab.impl.util.SwedenColorChooser;

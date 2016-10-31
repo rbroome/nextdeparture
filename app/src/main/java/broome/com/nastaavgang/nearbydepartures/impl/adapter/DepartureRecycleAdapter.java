@@ -1,4 +1,4 @@
-package broome.com.nastaavgang.nearbydeparture.impl.adapter;
+package broome.com.nastaavgang.nearbydepartures.impl.adapter;
 
 import android.broome.com.nastaavgang.R;
 import android.content.Context;
@@ -14,8 +14,8 @@ import net.cachapa.expandablelayout.ExpandableLayout;
 import java.util.Collections;
 import java.util.List;
 
-import broome.com.nastaavgang.nearbydeparture.impl.model.Departure;
-import broome.com.nastaavgang.nearbydeparture.impl.view.MyView;
+import broome.com.nastaavgang.nearbydepartures.impl.model.Departure;
+import broome.com.nastaavgang.nearbydepartures.impl.view.MyView;
 
 /**
  * Created by robin on 12/08/16.

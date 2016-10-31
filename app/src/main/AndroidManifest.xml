@@ -16,7 +16,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
         <activity
-            android:name="broome.com.nastaavgang.nearbydeparture.impl.view.MainActivity"
+            android:name="broome.com.nastaavgang.nearbydepartures.impl.view.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

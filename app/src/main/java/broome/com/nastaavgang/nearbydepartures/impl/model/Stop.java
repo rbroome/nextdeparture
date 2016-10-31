@@ -1,4 +1,4 @@
-package broome.com.nastaavgang.nearbydeparture.impl.model;
+package broome.com.nastaavgang.nearbydepartures.impl.model;
 
 /**
  * Created by robin on 13/08/16.

@@ -6,8 +6,8 @@ import javax.inject.Singleton;
 
 import broome.com.nastaavgang.base.impl.LocationInteractor;
 import broome.com.nastaavgang.executor.dagger.ExecutorModule;
-import broome.com.nastaavgang.nearbydeparture.dagger.NearbyDepartureModule;
-import broome.com.nastaavgang.nearbydeparture.impl.presenter.StationListPresenter;
+import broome.com.nastaavgang.nearbydepartures.dagger.NearbyDepartureModule;
+import broome.com.nastaavgang.nearbydepartures.impl.presenter.StationListPresenter;
 import broome.com.nastaavgang.nearbystations.dagger.NearbyStationsModule;
 import broome.com.nastaavgang.nearbystations.impl.presenter.NearbyStationsPresenter;
 import broome.com.nastaavgang.trafiklab2.impl.interactor.GetNearbyStationsInteractor;

@@ -21,8 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import broome.com.nastaavgang.di.CustomApplication;
-import broome.com.nastaavgang.nearbydeparture.impl.model.Departure;
-import broome.com.nastaavgang.nearbydeparture.impl.view.MainActivity;
+import broome.com.nastaavgang.nearbydepartures.impl.model.Departure;
+import broome.com.nastaavgang.nearbydepartures.impl.view.MainActivity;
 import broome.com.nastaavgang.nearbystations.impl.adapter.StationAdapter;
 import broome.com.nastaavgang.nearbystations.impl.model.Station;
 import broome.com.nastaavgang.nearbystations.impl.presenter.NearbyStationsPresenter;

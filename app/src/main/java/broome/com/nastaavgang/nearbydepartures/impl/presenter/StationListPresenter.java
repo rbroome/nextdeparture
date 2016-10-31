@@ -1,4 +1,4 @@
-package broome.com.nastaavgang.nearbydeparture.impl.presenter;
+package broome.com.nastaavgang.nearbydepartures.impl.presenter;
 
 import android.util.Log;
 
@@ -10,11 +10,11 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import broome.com.nastaavgang.base.impl.LocationInteractor;
+import broome.com.nastaavgang.base.interfaces.GetLastLocation;
 import broome.com.nastaavgang.base.interfaces.GetNearbyDepartures;
 import broome.com.nastaavgang.base.interfaces.GetNearbyStations;
-import broome.com.nastaavgang.nearbydeparture.impl.model.Departure;
-import broome.com.nastaavgang.nearbydeparture.interfaces.Presenter;
+import broome.com.nastaavgang.nearbydepartures.impl.model.Departure;
+import broome.com.nastaavgang.nearbydepartures.interfaces.Presenter;
 import broome.com.nastaavgang.nearbystations.impl.model.Station;
 
 /**
@@ -26,10 +26,10 @@ public class StationListPresenter extends Presenter {
     GetNearbyDepartures getNearbyDepartures;
     private List<Station> stationsList;
     private StationListPresenter.View view;
-    LocationInteractor ls;
+    GetLastLocation ls;
 
     @Inject
-    public StationListPresenter(GetNearbyStations getNearbyStations,GetNearbyDepartures getNearbyDepartures,LocationInteractor ls) {
+    public StationListPresenter(GetNearbyStations getNearbyStations,GetNearbyDepartures getNearbyDepartures,GetLastLocation ls) {
         this.getNearbyStations = getNearbyStations;
         this.getNearbyDepartures = getNearbyDepartures;
         this.ls = ls;
@@ -47,7 +47,7 @@ public class StationListPresenter extends Presenter {
             public void onStationsFound(List<Station> stations) {
                 view.showStationsFound(stations);
                 stationsList = stations;
-                getNearbyDepartures();
+                getNearbyDepartures(stations);
             }
 
             @Override
@@ -62,7 +62,7 @@ public class StationListPresenter extends Presenter {
         });
     }
 
-     public void getNearbyDepartures(){
+     public void getNearbyDepartures(List<Station> stationsList){
          view.showLoading();
 
          if(stationsList != null) {

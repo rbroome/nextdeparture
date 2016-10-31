@@ -1,9 +1,9 @@
-package broome.com.nastaavgang.nearbydeparture.dagger;
+package broome.com.nastaavgang.nearbydepartures.dagger;
 
 import broome.com.nastaavgang.base.impl.LocationInteractor;
 import broome.com.nastaavgang.base.interfaces.GetNearbyDepartures;
 import broome.com.nastaavgang.base.interfaces.GetNearbyStations;
-import broome.com.nastaavgang.nearbydeparture.impl.presenter.StationListPresenter;
+import broome.com.nastaavgang.nearbydepartures.impl.presenter.StationListPresenter;
 
 import dagger.Module;
 import dagger.Provides;

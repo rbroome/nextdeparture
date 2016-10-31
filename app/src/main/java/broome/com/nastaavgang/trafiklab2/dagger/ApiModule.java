@@ -6,9 +6,10 @@ import android.content.Context;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import broome.com.nastaavgang.base.impl.LocationInteractor;
+import broome.com.nastaavgang.base.interfaces.GetLastLocation;
 import broome.com.nastaavgang.base.interfaces.GetNearbyDepartures;
 import broome.com.nastaavgang.base.interfaces.GetNearbyStations;
+import broome.com.nastaavgang.base.mock.MockLocationInteractor;
 import broome.com.nastaavgang.executor.interfaces.Executor;
 import broome.com.nastaavgang.trafiklab2.impl.interactor.GetNearbyDeparturesInteractor;
 import broome.com.nastaavgang.trafiklab2.impl.interactor.GetNearbyStationsInteractor;
@@ -19,6 +20,7 @@ import retrofit.Endpoint;
 import retrofit.Endpoints;
 import retrofit.RestAdapter;
 import retrofit.converter.GsonConverter;
+import broome.com.nastaavgang.trafiklab2.interfaces.MockClient;
 
 
 /**
@@ -41,14 +43,19 @@ public class ApiModule {
         return new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
                 .setEndpoint(endpoint)
-                //.setClient(new MockClient())
+                .setClient(new MockClient())
                 .setConverter(new GsonConverter(gson))
                 .build();
     }
     @Provides
-    LocationInteractor provideLocationService(Executor executor, Context c){
-        return new LocationInteractor(executor,c);
+    GetLastLocation provideLocationService(Executor executor, Context c){
+        return new MockLocationInteractor(executor,c);
     }
+//    @Provides
+//    GetLastLocation provideLocationService(Executor executor, Context c){
+//        return new LocationInteractor(executor,c);
+//    }
+
     @Provides
     TrafikLab2Service provideTrafikLabService(RestAdapter restAdapter){
         return restAdapter.create(TrafikLab2Service.class);

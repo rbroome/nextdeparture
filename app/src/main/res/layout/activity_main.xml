@@ -28,19 +28,22 @@
             android:orientation="vertical"
             android:layout_marginTop="55dp">
 
+<!--
     <fragment
-        android:name="com.google.android.gms.maps.StreetViewPanoramaFragment"
+        class ="com.google.android.gms.maps.StreetViewPanoramaFragment"
         android:id="@+id/streetviewpanorama"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_weight="0.6"
         tools:layout="@android:layout/simple_gallery_item"
         />
+            -->
+
 
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools" android:id="@+id/fragmentt"
-        android:name="broome.com.nastaavgang.nearbydeparture.impl.view.MainActivityFragment"
+        android:name="broome.com.nastaavgang.nearbydepartures.impl.view.MainActivityFragment"
         tools:layout="@layout/fragment_main" android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="0.4"

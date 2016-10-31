@@ -1,4 +1,4 @@
-package broome.com.nastaavgang.nearbydeparture.impl.view;
+package broome.com.nastaavgang.nearbydepartures.impl.view;
 
 import android.broome.com.nastaavgang.R;
 import android.content.Context;
@@ -19,7 +19,6 @@ import android.widget.ProgressBar;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.OnStreetViewPanoramaReadyCallback;
 import com.google.android.gms.maps.StreetViewPanorama;
-import com.google.android.gms.maps.StreetViewPanoramaFragment;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
@@ -29,9 +28,9 @@ import javax.inject.Inject;
 
 import broome.com.nastaavgang.base.impl.LocationInteractor;
 import broome.com.nastaavgang.di.CustomApplication;
-import broome.com.nastaavgang.nearbydeparture.impl.adapter.DepartureRecycleAdapter;
-import broome.com.nastaavgang.nearbydeparture.impl.model.Departure;
-import broome.com.nastaavgang.nearbydeparture.impl.presenter.StationListPresenter;
+import broome.com.nastaavgang.nearbydepartures.impl.adapter.DepartureRecycleAdapter;
+import broome.com.nastaavgang.nearbydepartures.impl.model.Departure;
+import broome.com.nastaavgang.nearbydepartures.impl.presenter.StationListPresenter;
 import broome.com.nastaavgang.nearbystations.impl.model.Station;
 import broome.com.nastaavgang.nearbystations.impl.view.NearbyStationsActivity;
 import butterknife.Bind;
@@ -76,16 +75,18 @@ public class MainActivity extends FragmentActivity implements StationListPresent
         ButterKnife.bind(this);
 
 
+/*
         StreetViewPanoramaFragment streetViewPanoramaFragment =
                 (StreetViewPanoramaFragment) getFragmentManager()
                         .findFragmentById(R.id.streetviewpanorama);
+*/
 
 
         //departureAdapter = new DepartureAdapter(this,departures);
 
         //listViewOfDepartures.setAdapter(departureAdapter);
 
-        streetViewPanoramaFragment.getStreetViewPanoramaAsync(this);
+        //streetViewPanoramaFragment.getStreetViewPanoramaAsync(this);
 
         presenter = ((CustomApplication) getApplication()).Component().stationListPrestener();
         presenter.setView(this);
@@ -98,7 +99,9 @@ public class MainActivity extends FragmentActivity implements StationListPresent
     }
 
     private void loadDepartures(){
-        Bundle extras = getIntent().getExtras();
+        Bundle extras = null;
+        if(getIntent() != null)
+            extras = getIntent().getExtras();
         if(extras != null) {
             String currentStationId= extras.getString(getResources().getString(R.string.current_station));
             String currentCity = extras.getString(getResources().getString(R.string.current_city));
@@ -184,7 +187,7 @@ public class MainActivity extends FragmentActivity implements StationListPresent
 
     @Override
     public void showStationsFound(List<Station> stations) {
-        presenter.getNearbyDepartures();
+        presenter.getNearbyDepartures(stations);
 
     }
 

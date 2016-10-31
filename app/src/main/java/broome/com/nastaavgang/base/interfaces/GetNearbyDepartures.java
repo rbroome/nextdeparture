@@ -2,7 +2,7 @@ package broome.com.nastaavgang.base.interfaces;
 
 import java.util.List;
 
-import broome.com.nastaavgang.nearbydeparture.impl.model.Departure;
+import broome.com.nastaavgang.nearbydepartures.impl.model.Departure;
 
 /**
  * Interface for getting departures near the user.

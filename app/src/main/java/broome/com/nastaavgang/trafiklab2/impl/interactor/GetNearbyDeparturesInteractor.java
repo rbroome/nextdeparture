@@ -1,5 +1,7 @@
 package broome.com.nastaavgang.trafiklab2.impl.interactor;
 
+import android.util.Log;
+
 import com.google.android.gms.maps.model.LatLng;
 
 import java.text.DateFormat;
@@ -14,7 +16,7 @@ import javax.inject.Inject;
 import broome.com.nastaavgang.base.interfaces.GetNearbyDepartures;
 import broome.com.nastaavgang.executor.interfaces.Executor;
 import broome.com.nastaavgang.executor.interfaces.Interactor;
-import broome.com.nastaavgang.nearbydeparture.impl.model.Departure;
+import broome.com.nastaavgang.nearbydepartures.impl.model.Departure;
 import broome.com.nastaavgang.trafiklab.impl.util.SwedenColorChooser;
 import broome.com.nastaavgang.trafiklab2.impl.model.departure.Arrival;
 import broome.com.nastaavgang.trafiklab2.impl.model.departure.Arrivals;
@@ -33,6 +35,7 @@ public class GetNearbyDeparturesInteractor implements Interactor,GetNearbyDepart
     private TrafikLab2Service trafikLabService;
     private String id;
     private String city;
+    private List<Departure> departures = new ArrayList<>();
 
     @Inject
     public GetNearbyDeparturesInteractor(Executor executor, TrafikLab2Service trafikLabService) {
@@ -61,6 +64,9 @@ public class GetNearbyDeparturesInteractor implements Interactor,GetNearbyDepart
 
         }catch(RetrofitError e){
             if (e.getKind() == RetrofitError.Kind.NETWORK){
+                notifyOnConnectionError();
+            }else {
+                //TODO: Check for other errors
                 notifyOnConnectionError();
             }
         }
@@ -130,9 +136,9 @@ public class GetNearbyDeparturesInteractor implements Interactor,GetNearbyDepart
             int secondaryColor = SwedenColorChooser.getSecondaryColor(number,city);
 
             List<Stop> apiStops= d.getStops().getStop();
-            List<broome.com.nastaavgang.nearbydeparture.impl.model.Stop> stops = new ArrayList<broome.com.nastaavgang.nearbydeparture.impl.model.Stop>();
+            List<broome.com.nastaavgang.nearbydepartures.impl.model.Stop> stops = new ArrayList<broome.com.nastaavgang.nearbydepartures.impl.model.Stop>();
             for(Stop s : apiStops){
-                broome.com.nastaavgang.nearbydeparture.impl.model.Stop tempStop = new broome.com.nastaavgang.nearbydeparture.impl.model.Stop();
+                broome.com.nastaavgang.nearbydepartures.impl.model.Stop tempStop = new broome.com.nastaavgang.nearbydepartures.impl.model.Stop();
                 tempStop.setName(s.getName());
                 tempStop.setArrTime(s.getArrTime());
                 tempStop.setDepTime(s.getDepTime());
@@ -142,9 +148,10 @@ public class GetNearbyDeparturesInteractor implements Interactor,GetNearbyDepart
             }
 
             Departure departure = new Departure(timeLeft, direction, number,loc,d.getStop(),secondaryColor,primaryColor,stops);
-
+            Log.d(this.getClass().getSimpleName(),"Adding :" + departure.getNumber());
             departuresList.add(departure);
         }
+        this.departures = departuresList;
         cb.onDeparturesFound(departuresList);
 
     }
@@ -165,9 +172,17 @@ public class GetNearbyDeparturesInteractor implements Interactor,GetNearbyDepart
             return "Nu";
 
         }else if(minLeft < 0){
-            return null;
+            //TODO: NOT TEST HERE
+            return "TEST";
         }else
             return String.valueOf(minLeft) + " min";
+    }
+
+    public List<Departure> getDepartures(){
+        return departures;
+    }
+    public void setCallback(Callback cb){
+        this.cb = cb;
     }
     private void notifyOnDeparturesNotFound(){cb.onDeparturesNotFound();}
     private void notifyOnConnectionError(){

@@ -1,6 +1,7 @@
 package broome.com.nastaavgang.nearbystations.dagger;
 
 import broome.com.nastaavgang.base.impl.LocationInteractor;
+import broome.com.nastaavgang.base.interfaces.GetLastLocation;
 import broome.com.nastaavgang.base.interfaces.GetNearbyStations;
 import broome.com.nastaavgang.nearbystations.impl.presenter.NearbyStationsPresenter;
 
@@ -14,7 +15,7 @@ import dagger.Provides;
 public class NearbyStationsModule {
 
     @Provides
-    NearbyStationsPresenter provideNearbyStationsPresenter(LocationInteractor ls, GetNearbyStations getNearbyStations){
+    NearbyStationsPresenter provideNearbyStationsPresenter(GetLastLocation ls, GetNearbyStations getNearbyStations){
         return new NearbyStationsPresenter(ls,getNearbyStations);
     }
 

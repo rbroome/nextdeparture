@@ -1,5 +1,6 @@
 package broome.com.nastaavgang.trafiklab2.impl.interactor;
 
+import android.location.Location;
 import android.util.Log;
 
 import com.google.android.gms.maps.model.LatLng;
@@ -9,7 +10,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import broome.com.nastaavgang.base.impl.LocationInteractor;
 import broome.com.nastaavgang.base.interfaces.GetLastLocation;
 import broome.com.nastaavgang.base.interfaces.GetNearbyStations;
 import broome.com.nastaavgang.executor.interfaces.Executor;
@@ -29,11 +29,12 @@ public class GetNearbyStationsInteractor implements GetNearbyStations,Interactor
     private Executor executor;
     private Callback cb;
     private TrafikLab2Service trafikLabService;
-    private LocationInteractor ls;
+    private GetLastLocation ls;
     private android.location.Location lastLocation;
+    private List<StopLocation> locations = new ArrayList<>();
 
     @Inject
-    public GetNearbyStationsInteractor(Executor executor, TrafikLab2Service trafikLabService,LocationInteractor locationService) {
+    public GetNearbyStationsInteractor(Executor executor, TrafikLab2Service trafikLabService,GetLastLocation locationService) {
         this.executor = executor;
         this.trafikLabService = trafikLabService;
         this.ls = locationService;
@@ -53,7 +54,7 @@ public class GetNearbyStationsInteractor implements GetNearbyStations,Interactor
     public void run() {
         try {
 
-            List<StopLocation> locations = getNearbyStations();
+            locations = getNearbyStations();
             if (locations != null && locations.size() > 0) {
                 notifyOnStationsFound(locations);
             } else {
@@ -62,6 +63,9 @@ public class GetNearbyStationsInteractor implements GetNearbyStations,Interactor
 
         } catch (RetrofitError e) {
             if (e.getKind() == RetrofitError.Kind.NETWORK) {
+                notifyOnConnectionError();
+            }else {
+                //TODO: Check other errors too?
                 notifyOnConnectionError();
             }
         }
@@ -95,8 +99,18 @@ public class GetNearbyStationsInteractor implements GetNearbyStations,Interactor
             return s.getStopLocation();
         }else{
             Log.e(TAG,"Last location is not known, canceling");
-            return null;
+            return new ArrayList<>();
         }
+    }
+    public void setCallback(Callback cb){
+        this.cb = cb;
+    }
+
+    public List<StopLocation> getStations(){
+        return locations;
+    }
+    public void setLastLocation(Location loc){
+        this.lastLocation=loc;
     }
 
     @Override

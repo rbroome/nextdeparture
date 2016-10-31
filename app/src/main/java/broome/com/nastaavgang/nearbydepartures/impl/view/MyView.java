@@ -1,4 +1,4 @@
-package broome.com.nastaavgang.nearbydeparture.impl.view;
+package broome.com.nastaavgang.nearbydepartures.impl.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -18,10 +18,11 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 
-import broome.com.nastaavgang.nearbydeparture.impl.model.Line;
-import broome.com.nastaavgang.nearbydeparture.impl.model.Stop;
+import broome.com.nastaavgang.nearbydepartures.impl.model.Line;
+import broome.com.nastaavgang.nearbydepartures.impl.model.Stop;
 
 /**
+ * Custom view drawing the graph between stops.
  * Created by robin on 13/08/16.
  */
 public class MyView extends View {

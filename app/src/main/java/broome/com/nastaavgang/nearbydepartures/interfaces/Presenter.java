@@ -1,4 +1,4 @@
-package broome.com.nastaavgang.nearbydeparture.interfaces;
+package broome.com.nastaavgang.nearbydepartures.interfaces;
 
 /**
  * Created by robin on 16/05/15.

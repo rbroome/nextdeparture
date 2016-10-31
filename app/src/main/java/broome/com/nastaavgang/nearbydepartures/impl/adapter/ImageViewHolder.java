@@ -1,4 +1,4 @@
-package broome.com.nastaavgang.nearbydeparture.impl.adapter;
+package broome.com.nastaavgang.nearbydepartures.impl.adapter;
 
 import android.broome.com.nastaavgang.R;
 import android.view.View;
